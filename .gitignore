@@ -134,4 +134,7 @@ password.txt
 token.txt
 output-csv
 test.py
-*.tif
+cut/ndwi2_cut/
+cut/rgb_cut/
+cut/sar_cut/
+tiff/
