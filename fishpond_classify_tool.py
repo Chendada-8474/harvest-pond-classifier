@@ -2,6 +2,8 @@ import sys
 import matplotlib.pyplot as plt
 from classify_core_function import *
 import json
+from easygui import fileopenbox
+import os
 
 
 def on_press(event):
@@ -119,10 +121,18 @@ def on_press(event):
 
 print("不知道會什麼預設會是中文輸入法\n使用前請先改成英文輸入法")
 
-fp_path = "./sha/demo_ponds_5000m2.shp"
-sar_path = "./tiff/Subset_S1A_IW_GRDH_1SDV_20211210.tif"
-rgb_path = "./tiff/S2A_MSIL2A_20211211T023111_N0301_R046_T50QRL_20211211T045314_RGB2.tif"
-ndwi2_path = "./tiff/20211211 NDWI2_TWD97.tif"
+this_pc = os.environ['COMPUTERNAME']
+if this_pc == "HAB-21-262":
+    fp_path = "./sha/demo_ponds_5000m2.shp"
+    sar_path = "./tiff/Subset_S1A_IW_GRDH_1SDV_20211210.tif"
+    rgb_path = "./tiff/S2A_MSIL2A_20211211T023111_N0301_R046_T50QRL_20211211T045314_RGB2.tif"
+    ndwi2_path = "./tiff/20211211 NDWI2_TWD97.tif"
+
+else:
+    fp_path = fileopenbox(msg = "請選擇魚塭 shapefile 檔")
+    sar_path = fileopenbox(msg = "請選擇 sar tif 檔")
+    rgb_path = fileopenbox(msg = "請選擇魚塭 rgb tif 檔")
+    ndwi2_path = fileopenbox(msg = "請選擇魚塭 ndwi2 tif 檔")
 
 
 fp = gpd.read_file(fp_path)
