@@ -22,7 +22,7 @@ def on_press(event):
         s1 = all_fp[0]
         all_fp.pop(0)
 
-    elif event.key == 'w':
+    elif event.key == 'e':
 
         train_data["train_x"].append(sar_2d_array)
         train_data["train_y"].append(0)
@@ -130,9 +130,17 @@ if this_pc == "HAB-21-262":
 
 else:
     fp_path = fileopenbox(msg = "請選擇魚塭 shapefile 檔")
+    if not fp_path:
+        exit()
     sar_path = fileopenbox(msg = "請選擇 sar tif 檔")
-    rgb_path = fileopenbox(msg = "請選擇魚塭 rgb tif 檔")
-    ndwi2_path = fileopenbox(msg = "請選擇魚塭 ndwi2 tif 檔")
+    if not sar_path:
+        exit()
+    rgb_path = fileopenbox(msg = "請選擇 rgb tif 檔")
+    if not rgb_path:
+        exit()
+    ndwi2_path = fileopenbox(msg = "請選擇 ndwi2 tif 檔")
+    if not ndwi2_path:
+        exit()
 
 
 fp = gpd.read_file(fp_path)
