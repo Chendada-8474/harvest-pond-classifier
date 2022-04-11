@@ -114,6 +114,7 @@ def plot_fp_s2_ndwi2(fp, sar, rgb, ndwi2, sar_fn: str, rgb_fn: str, ndwi2_fn: st
     return fps, cut_sar, cut_rgb, cut_ndwi2, sar_2d_array
 
 def get_filename(raster_path: str, fp_path: str, index: int):
+    fp_fn = fp_path.replace("\\", "/")
     fp_fn = fp_path.split("/")[-1][:-4]
     dir_name = raster_path.split("/")[-1][:-4] + "_" + fp_fn + "_" + str(index)
 
